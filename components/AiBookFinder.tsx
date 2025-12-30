@@ -8,12 +8,16 @@ const AiBookFinder: React.FC = () => {
   const [interests, setInterests] = useState<string>('');
   const [recommendation, setRecommendation] = useState<{ title: string; reason: string } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const getRecommendation = async () => {
     if (!interests.trim()) return;
+
     setLoading(true);
+    setError(null);
+    
     try {
-      // Create a new GoogleGenAI instance right before making an API call to ensure current configuration
+      // Always initialize with process.env.API_KEY directly in the constructor
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
@@ -38,14 +42,14 @@ const AiBookFinder: React.FC = () => {
         }
       });
       
-      // Extract generated text using the .text property (not a method)
       const text = response.text;
       if (text) {
         const data = JSON.parse(text.trim());
         setRecommendation(data);
       }
-    } catch (error) {
-      console.error("AI Error:", error);
+    } catch (err) {
+      console.error("AI Error:", err);
+      setError("Failed to get recommendation. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -94,6 +98,12 @@ const AiBookFinder: React.FC = () => {
             {loading ? <Loader2 className="animate-spin" /> : <Sparkles size={20} />}
             Get Magic Recommendation
           </button>
+
+          {error && (
+            <div className="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-xl text-red-200 text-sm text-center">
+              {error}
+            </div>
+          )}
 
           {recommendation && (
             <div className="mt-8 p-6 bg-white rounded-2xl text-slate-800 animate-in fade-in slide-in-from-bottom-4 duration-500">

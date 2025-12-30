@@ -1,36 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarcusBooks - Creative & Educational Children's Books</title>
-    <meta name="description" content="Discover MarcusBooks: high-quality coloring books, word searches, and activity books designed to spark creativity and learning in children of all ages.">
-    <meta name="keywords" content="children's books, coloring books, word search for kids, educational activities, MarcusBooks, Amazon books for kids">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://marcusbooks.click/">
-    <meta property="og:title" content="MarcusBooks - Creative & Educational Children's Books">
-    <meta property="og:description" content="Ignite your child's imagination with our unique collection of coloring and activity books.">
-    <meta property="og:image" content="https://picsum.photos/seed/marcusbooks/1200/630">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="MarcusBooks - Creative & Educational Children's Books">
-    <meta property="twitter:description" content="Ignite your child's imagination with our unique collection of coloring and activity books.">
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Discover MarcusBooks: coloring books, word searches, and activity books for kids.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            scroll-behavior: smooth;
-        }
-        h1, h2, h3, .font-kids {
-            font-family: 'Fredoka', sans-serif;
-        }
+        body { font-family: 'Nunito', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .font-kids { font-family: 'Fredoka', sans-serif; }
         .bg-pattern {
             background-color: #fdf2f8;
             background-image: radial-gradient(#f9a8d4 0.5px, transparent 0.5px), radial-gradient(#f9a8d4 0.5px, #fdf2f8 0.5px);
@@ -41,23 +23,25 @@
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-page-fade {
-            animation: pageFadeIn 0.4s ease-out forwards;
-        }
+        .animate-page-fade { animation: pageFadeIn 0.4s ease-out forwards; }
     </style>
 <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body class="bg-pattern text-slate-800">
     <div id="root"></div>
+    <!-- Questo tag è fondamentale per caricare l'app -->
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
